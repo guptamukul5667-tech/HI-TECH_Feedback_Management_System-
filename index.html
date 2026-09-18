@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hitech Institute of Engineering and Technology - Feedback Management System</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg sticky-top">
+
+    <div class="container">
+
+        <a href="#heroSection" class="brand-wrapper d-flex align-items-center gap-2">
+
+            <div class="brand-icon">
+                <i class="bi bi-mortarboard-fill"></i>
+            </div>
+
+            <div class="brand-name">
+                Hitech Institute of<br>
+                <span>Engineering and Technology</span>
+            </div>
+
+        </a>
+
+        <button
+            class="navbar-toggler border-0 shadow-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navContent"
+            aria-controls="navContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navContent"
+        >
+
+            <ul class="navbar-nav align-items-center gap-2 mb-3 mb-lg-0 me-lg-3">
+
+                <li>
+                    <a
+                        href="#heroSection"
+                        class="custom-nav-pill nav-home"
+                    >
+                        <i class="bi bi-house-door me-1"></i>
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="#featuresSection"
+                        class="custom-nav-pill nav-highlights"
+                    >
+                        <i class="bi bi-star me-1"></i>
+                        Highlights
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="#feedbackSection"
+                        class="custom-nav-pill nav-feedback"
+                    >
+                        <i class="bi bi-send me-1"></i>
+                        Give Feedback
+                    </a>
+                </li>
+
+            </ul>
+
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+
+                <button
+                    class="btn btn-outline-primary rounded-pill px-3 py-2 fw-semibold btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#loginModal"
+                    onclick="setRole('student')"
+                >
+                    <i class="bi bi-person me-1"></i>
+                    Student
+                </button>
+
+                <button
+                    class="btn btn-outline-success rounded-pill px-3 py-2 fw-semibold btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#loginModal"
+                    onclick="setRole('teacher')"
+                >
+                    <i class="bi bi-person-workspace me-1"></i>
+                    Faculty
+                </button>
+
+                <button
+                    class="btn btn-admin rounded-pill px-3 py-2 fw-semibold btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#loginModal"
+                    onclick="setRole('admin')"
+                >
+                    <i class="bi bi-shield-lock me-1"></i>
+                    Admin
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section id="heroSection" class="hero-section">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-7">
+
+                <span class="hero-badge">
+                    <i class="bi bi-shield-check-fill text-warning me-1"></i>
+                    Hitech Institute of Engineering and Technology
+                </span>
+
+                <h1 class="hero-title">
+                    Empowering Students & Elevating Academic Standards.
+                </h1>
+
+                <p class="hero-description">
+                    Welcome to the official feedback portal of
+                    Hitech Institute of Engineering and Technology.
+                    Share secure and confidential feedback about
+                    lectures, faculty members, teaching quality,
+                    and campus facilities.
+                </p>
+
+                <button
+                    onclick="scrollToSection('feedbackSection')"
+                    class="btn btn-light text-primary fw-bold rounded-pill px-4 py-3 shadow mt-3"
+                >
+                    <i class="bi bi-send-fill me-2"></i>
+                    Submit Your Feedback
+                </button>
+
+            </div>
+
+            <div class="col-lg-5">
+
+                <div class="card-glass p-4 text-dark">
+
+                    <h4 class="fw-bold mb-3">
+                        <i class="bi bi-speedometer2 text-primary me-2"></i>
+                        Institute Portal Stats
+                    </h4>
+
+                    <hr>
+
+                    <div class="row g-3 text-center">
+
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <h2
+                                    class="fw-bold text-primary mb-1"
+                                    id="totalCountDisplay"
+                                >
+                                    2,410
+                                </h2>
+
+                                <small class="text-muted fw-semibold">
+                                    Total Reviews
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <h2 class="fw-bold text-success mb-1">
+                                    4.7 / 5
+                                </h2>
+
+                                <small class="text-muted fw-semibold">
+                                    Campus Rating
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <h2 class="fw-bold text-warning mb-1">
+                                    60+
+                                </h2>
+
+                                <small class="text-muted fw-semibold">
+                                    Expert Faculty
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <h2 class="fw-bold text-info mb-1">
+                                    8
+                                </h2>
+
+                                <small class="text-muted fw-semibold">
+                                    Programs
+                                </small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section id="featuresSection" class="features-section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-badge features-badge">
+                Hitech Institute Excellence Highlights
+            </span>
+
+            <h2 class="section-title display-6">
+                Why Hitech Institute Stands Out
+            </h2>
+
+            <p class="text-muted mt-3">
+                Modern education, transparent feedback, and continuous improvement.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="card-glass p-4 h-100">
+
+                    <div class="feature-icon bg-primary bg-opacity-10 text-primary">
+                        <i class="bi bi-shield-lock"></i>
+                    </div>
+
+                    <h4 class="fw-bold">
+                        Anonymous Feedback
+                    </h4>
+
+                    <p class="text-muted small">
+                        Students can provide honest and constructive
+                        feedback regarding faculty, teaching methods,
+                        and academic facilities.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card-glass p-4 h-100">
+
+                    <div class="feature-icon bg-success bg-opacity-10 text-success">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+
+                    <h4 class="fw-bold">
+                        Detailed Analytics
+                    </h4>
+
+                    <p class="text-muted small">
+                        Evaluate teaching quality, punctuality,
+                        communication, and doubt-resolution capabilities
+                        using detailed rating metrics.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card-glass p-4 h-100">
+
+                    <div class="feature-icon bg-warning bg-opacity-10 text-warning">
+                        <i class="bi bi-people"></i>
+                    </div>
+
+                    <h4 class="fw-bold">
+                        Dedicated Portals
+                    </h4>
+
+                    <p class="text-muted small">
+                        Separate student, faculty, and administrator
+                        dashboards provide an organized feedback
+                        management experience.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEEDBACK FORM ================= -->
+
+<section id="feedbackSection" class="feedback-section">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-9">
+
+                <div
+                    class="card-glass p-4 p-md-5"
+                    id="feedbackCardContainer"
+                >
+
+                    <div class="text-center mb-4">
+
+                        <span class="section-badge feedback-badge">
+                            <i class="bi bi-star-fill me-1"></i>
+                            Student Feedback Form
+                        </span>
+
+                        <h2 class="section-title">
+                            Submit Faculty Feedback
+                        </h2>
+
+                        <p class="text-muted small">
+                            Your feedback helps improve teaching quality
+                            at Hitech Institute of Engineering and Technology.
+                        </p>
+
+                    </div>
+
+                    <form id="feedbackForm">
+
+                        <div class="row g-3">
+
+                            <!-- Department -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                    class="form-label small fw-semibold text-muted"
+                                    for="dept"
+                                >
+                                    Department / Course
+                                </label>
+
+                                <select
+                                    class="form-select form-control-custom"
+                                    id="dept"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Department
+                                    </option>
+
+                                    <option>
+                                        B.Tech - Computer Science & Engineering
+                                    </option>
+
+                                    <option>
+                                        B.Tech - Information Technology
+                                    </option>
+
+                                    <option>
+                                        BBA - Bachelor of Business Administration
+                                    </option>
+
+                                    <option>
+                                        BCA - Bachelor of Computer Applications
+                                    </option>
+
+                                    <option>
+                                        MBA - Master of Business Administration
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- Semester -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                    class="form-label small fw-semibold text-muted"
+                                    for="sem"
+                                >
+                                    Semester / Year
+                                </label>
+
+                                <select
+                                    class="form-select form-control-custom"
+                                    id="sem"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Semester
+                                    </option>
+
+                                    <option>1st Semester</option>
+                                    <option>2nd Semester</option>
+                                    <option>3rd Semester</option>
+                                    <option>4th Semester</option>
+                                    <option>5th Semester</option>
+                                    <option>6th Semester</option>
+                                    <option>7th Semester</option>
+                                    <option>8th Semester</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- Faculty -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                    class="form-label small fw-semibold text-muted"
+                                    for="teacherSelect"
+                                >
+                                    Faculty Member
+                                </label>
+
+                                <select
+                                    class="form-select form-control-custom"
+                                    id="teacherSelect"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Choose Faculty Member
+                                    </option>
+
+                                    <option>
+                                        Dr. Arvind Kumar - Computer Science
+                                    </option>
+
+                                    <option>
+                                        Prof. Sunita Sharma - Management
+                                    </option>
+
+                                    <option>
+                                        Dr. Rakesh Tyagi - Data Structures
+                                    </option>
+
+                                    <option>
+                                        Prof. Pooja Singhal - Business Analytics
+                                    </option>
+
+                                    <option>
+                                        Dr. Manish Sharma - Software Engineering
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- Subject -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                    class="form-label small fw-semibold text-muted"
+                                    for="subject"
+                                >
+                                    Subject Name / Code
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="form-control form-control-custom"
+                                    id="subject"
+                                    placeholder="e.g. BCS-501 Operating Systems"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- STAR RATING -->
+
+                            <div class="col-12">
+
+                                <div class="rating-box">
+
+                                    <label class="form-label fw-bold d-block">
+                                        Overall Rating
+                                    </label>
+
+                                    <div
+                                        class="d-flex justify-content-center gap-2"
+                                        id="starContainer"
+                                    >
+
+                                        <i
+                                            class="bi bi-star-fill rating-star"
+                                            data-val="1"
+                                        ></i>
+
+                                        <i
+                                            class="bi bi-star-fill rating-star"
+                                            data-val="2"
+                                        ></i>
+
+                                        <i
+                                            class="bi bi-star-fill rating-star"
+                                            data-val="3"
+                                        ></i>
+
+                                        <i
+                                            class="bi bi-star-fill rating-star"
+                                            data-val="4"
+                                        ></i>
+
+                                        <i
+                                            class="bi bi-star-fill rating-star"
+                                            data-val="5"
+                                        ></i>
+
+                                    </div>
+
+                                    <input
+                                        type="hidden"
+                                        id="ratingValue"
+                                        required
+                                    >
+
+                                    <small
+                                        id="ratingText"
+                                        class="text-muted d-block mt-2"
+                                    >
+                                        Select your rating
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- TEACHING QUALITY -->
+
+                            <div class="col-md-4">
+
+                                <label
+                                    c
